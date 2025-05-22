@@ -2,12 +2,24 @@ using UnityEngine;
 
 public class Study_component : MonoBehaviour
 {
-    public GameObject obj_study;
-    public string chage_name="test";
+    public GameObject obj;
+    public Material mat;
+    public Mesh mes;
+    MeshRenderer meshRenderer;
+    void Create_Cube(string name="Default") {
+        obj = new GameObject(name);
+        obj.AddComponent<MeshRenderer>();
+        obj.AddComponent<MeshFilter>();
+        obj.GetComponent<MeshRenderer>().material = mat;
+
+        obj.GetComponent<MeshFilter>().mesh = mes;
+        obj.AddComponent<BoxCollider>();
+
+    }
     void Start()
     {
-        obj_study = GameObject.Find("Cube");
-        obj_study.name = chage_name;   
+        //Create_Cube("cube");
+        obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
     }
 
     // Update is called once per frame
